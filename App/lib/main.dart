@@ -1,5 +1,7 @@
 import 'package:application/pages/home_page.dart';
 import 'package:application/pages/login_page.dart';
+import 'package:application/pages/my_communities_page.dart';
+import 'package:application/pages/new_post_page.dart';
 import 'package:application/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +25,10 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/home': (context) => const HomePage(),
+        '/newpost': (context) => const NewPostPage(),
+        '/mycommunities': (context) => const MyCommunitiesPage(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }

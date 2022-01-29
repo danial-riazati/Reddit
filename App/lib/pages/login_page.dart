@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: HexColor("#5B5B5B"),
+        backgroundColor: HexColor("#C5C5C5"),
         body: ProgressHUD(
           key: UniqueKey(),
           inAsyncCall: isAPIcallProcess,
@@ -74,21 +74,26 @@ class _LoginPageState extends State<LoginPage> {
               bottom: 10,
             ),
             child: FormHelper.inputFieldWidget(
-                context, const Icon(Icons.person), "username", "username",
-                (onValidate) {
-              if (onValidate.isEmpty) return 'Username can\'t be empty';
-            }, (onSaved) {
-              username = onSaved;
-            },
-                borderFocusColor: Colors.white,
-                textColor: Colors.white,
-                hintColor: Colors.white.withOpacity(0.4),
-                prefixIconColor: Colors.white,
-                borderColor: Colors.white,
-                validationColor: Colors.red),
+              context,
+              const Icon(Icons.person),
+              "username",
+              "username",
+              (onValidate) {
+                if (onValidate.isEmpty) return 'Username can\'t be empty';
+              },
+              (onSaved) {
+                username = onSaved;
+              },
+              borderFocusColor: Colors.white,
+              textColor: Colors.white,
+              hintColor: Colors.white.withOpacity(0.4),
+              prefixIconColor: Colors.white,
+              borderColor: Colors.white,
+              validationColor: Colors.deepPurpleAccent,
+            ),
           ),
           FormHelper.inputFieldWidget(
-              context, const Icon(Icons.person), "password", "password",
+              context, const Icon(Icons.vpn_key), "password", "password",
               (onValidate) {
             if (onValidate.isEmpty) return 'Password can\'t be empty';
           }, (onSaved) {
@@ -99,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
               hintColor: Colors.white.withOpacity(0.4),
               prefixIconColor: Colors.white,
               borderColor: Colors.white,
-              validationColor: Colors.red,
+              validationColor: Colors.deepPurpleAccent,
               obscureText: hidePssword,
               suffixIcon: Padding(
                 padding: const EdgeInsets.only(right: 10),
@@ -124,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                   setState(() {
                     isAPIcallProcess = true;
                   });
-                  LoginRegisterRequestModel model = LoginRegisterRequestModel(
+                  LoginRequestModel model = LoginRequestModel(
                       username: username!, password: password!);
                   APIService.login(model).then((res) {
                     setState(() {
@@ -139,8 +144,8 @@ class _LoginPageState extends State<LoginPage> {
                   });
                 }
               },
-              btnColor: Colors.redAccent,
-              borderColor: Colors.redAccent,
+              btnColor: Colors.deepPurpleAccent,
+              borderColor: Colors.deepPurpleAccent,
             ),
           ),
           const SizedBox(

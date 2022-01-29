@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 5,
         maxlength: 1024 
+    },
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        unique: true,
     }
 });
 
@@ -35,7 +41,8 @@ const complexityOptions = {
 function validateUser(user){
     return Joi.object({
         name: Joi.string().min(5).max(30).required(),
-        password: passwordComplexity(complexityOptions).required()
+        password: passwordComplexity(complexityOptions).required(),
+        email:Joi.string().email()
     }).validate(user);
 }
 
